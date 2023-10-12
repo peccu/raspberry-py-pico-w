@@ -20,7 +20,7 @@ RUN \
 ENV PICO_SDK_PATH=/project/pico-sdk/
 
 COPY make.sh /project/src/
-RUN chmod +x make.sh
+RUN chmod +x /project/src/make.sh
 
 # # Copy in our source files
 # COPY src/* /project/src/
