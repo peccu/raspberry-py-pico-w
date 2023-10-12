@@ -19,8 +19,8 @@ RUN \
 # Set the Pico SDK environment variable
 ENV PICO_SDK_PATH=/project/pico-sdk/
 
-COPY make.sh /project/src/
-RUN chmod +x /project/src/make.sh
+COPY make.sh /project/
+RUN chmod +x /project/make.sh
 
 # # Copy in our source files
 # COPY src/* /project/src/
@@ -37,4 +37,4 @@ WORKDIR /project/src
 
 # Command that will be invoked when the container starts
 ENTRYPOINT ["/bin/bash"]
-CMD [ "./make.sh" ]
+CMD [ "/project/make.sh" ]
