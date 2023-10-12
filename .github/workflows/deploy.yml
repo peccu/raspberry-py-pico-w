@@ -3,8 +3,8 @@ name: Deploy new version
 # Only deploy when a new tag is pushed
 on:
   push:
-    tags:
-      - "v*.*.*"
+    # tags:
+    #   - "v*.*.*"
 
 # Must match the project() name in CMakeLists.txt
 env:
