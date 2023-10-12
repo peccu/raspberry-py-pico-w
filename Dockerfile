@@ -6,7 +6,7 @@ RUN \
     apt update && \
     apt install -y git python3 && \
     apt install -y cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
-    
+
 # Install Pico SDK
 RUN \
     mkdir -p /project/src/ && \
@@ -15,19 +15,25 @@ RUN \
     cd pico-sdk/ && \
     git submodule update --init && \
     cd /
-    
+
 # Set the Pico SDK environment variable
 ENV PICO_SDK_PATH=/project/pico-sdk/
 
-# Copy in our source files
-COPY src/* /project/src/
+COPY make.sh /project/src/
 
-# Build project
-RUN \
-    mkdir -p /project/src/build && \
-    cd /project/src/build && \
-    cmake .. && \
-    make
-    
+# # Copy in our source files
+# COPY src/* /project/src/
+
+# # Build project
+# RUN \
+#     mkdir -p /project/src/build && \
+#     cd /project/src/build && \
+#     cmake .. && \
+#     make
+
+VOLUME [ "/project/src" ]
+WORKDIR /project/src
+
 # Command that will be invoked when the container starts
 ENTRYPOINT ["/bin/bash"]
+CMD [ "make.sh" ]
