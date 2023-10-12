@@ -40,8 +40,8 @@ jobs:
       - name: Upload result
         uses: actions/upload-artifact@v3
         with:
-          name: ${APP_NAME}.uf2
-          path: ${APP_NAME}.uf2
+          name: ${{ env.APP_NAME }}.uf2
+          path: ${{ env.APP_NAME }}.uf2
 
       # - name: Put environment variable into the env context
       #   run: echo "app_name=$APP_NAME" >> $GITHUB_ENV
